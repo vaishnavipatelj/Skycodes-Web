@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -51,7 +52,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${archivo.variable} ${mono.variable}`}>
       {/* `boot` hides the hero until <Boot /> swaps it for `ready`. */}
-      <body className="boot">{children}</body>
+      <body className="boot">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
